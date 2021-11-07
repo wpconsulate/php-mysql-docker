@@ -2,28 +2,38 @@ version: '3.8'
 services:
   php-apache-environment:
     container_name: phpdocker
-    image: php:8.0-apache
+    build:
+      context: ./
+      args:
+        BUILD_ENV: ${BUILD_ENV}
+    # Mount volume
     volumes:
       - ./src:/var/www/html/
     ports:
-      - "8000:80"
+      - "${APP_PORT}:80"
 
   db:
     container_name: db
     image: mysql:5.7.36
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: phpdocker
-      MYSQL_USER: dbuser
-      MYSQL_PASSWORD: dbpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
+      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "9906:3306"
+      - "${MYSQL_PORT_EXPOSE}:3306"
+    # Mount init.sql file to automatically run
+    # and create tables for us.
+    # everything in docker-entrypoint-initdb.d folder
+    # is executed as soon as container is up nd running.
+    volumes:
+      - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - '8080:80'
+      - '${PHPMYADMIN_PORT}:80'
     restart: always
     environment:
       PMA_HOST: db

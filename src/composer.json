@@ -1,0 +1,30 @@
+{
+    "name": "wpconsulate/php-mysql-docker",
+    "description": "A Small PHP Docker framework",
+    "keywords": [
+        "microframework",
+        "php-dcoker"
+    ],
+    "homepage": "https://github.com/wpconsulate/php-mysql-docker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Deepak Oberoi",
+            "email": "hello@deepakoberoi.com",
+            "homepage": "http://deepakoberoi.com/"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "ext-json": "*",
+        "monolog/monolog": "^2.3",
+        "slim/slim": "^4.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+        "start": "php -S localhost:8000 -t /var/www/html",
+        "test": "phpunit"
+    }
+}

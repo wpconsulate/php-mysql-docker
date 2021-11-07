@@ -27,24 +27,24 @@ Temporary Items
 .apdisk
 
 
-/vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
+/src/vendor/
+/src/node_modules/
+/src/npm-debug.log
+/src/yarn-error.log
 
 # Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
+/src/bootstrap/compiled.php
+/src/app/storage/
 
 # Laravel 5 & Lumen specific
-public/storage
-public/hot
-public_html/storage
-public_html/hot
+/src/public/storage
+/src/public/hot
+/src/public_html/storage
+/src/public_html/hot
 
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
+/src/storage/*.key
+/src/.env
+/src/Homestead.yaml
+/src/Homestead.json
 /.vagrant
 .phpunit.result.cache

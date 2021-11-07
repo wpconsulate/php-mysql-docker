@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    require_once (__DIR__.'/inc/db-conn.php')
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
